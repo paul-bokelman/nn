@@ -24,15 +24,15 @@ labels = [0, 1, 2]
 x_values = np.array(X_train)
 y_values = np.array(y_train)
 
-input_layer = Layer(2, 500)
-l1 = Layer(500, 400)
+input_layer = Layer(2, 50)
+l1 = Layer(50, 50)
 l1_activation = ReLUActivation()
-l2 = Layer(400, 300)
+l2 = Layer(50, 25)
 l2_activation = ReLUActivation()
-output_layer = Layer(300, len(labels))
+output_layer = Layer(25, len(labels))
 output_activation = SoftMaxActivation()
 
-epochs = 100
+epochs = 20
 costs = []
 previous_cost = 9999
 

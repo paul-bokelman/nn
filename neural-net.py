@@ -32,7 +32,7 @@ l2_activation = ReLUActivation()
 output_layer = Layer(25, len(labels))
 output_activation = SoftMaxActivation()
 
-epochs = 20
+epochs = 50
 costs = []
 previous_cost = 9999
 
@@ -47,7 +47,7 @@ for epoch in range(epochs):
     correct = 0
     for (x, label) in zip(X_train, np.array(y_train)):
         input_layer.forward(np.atleast_2d(x))
-        l1.forward(input_layer.output)
+        l1.forward(input_layer.output) 
         l1_activation.forward(l1.output)
         l2.forward(l1_activation.output)
         l2_activation.forward(l2.output)
@@ -62,6 +62,8 @@ for epoch in range(epochs):
     
     cost = CostFunction(y_values, np.array(y_predicted)).mean_squared_error()
     costs.append(cost)
+
+
     if(cost < previous_cost):
         print(f"decreased cost (epoch {epoch}): {previous_cost} -> {cost} ({round((correct / len(X_train)) * 100, 2)}%")
         previous_cost = cost
